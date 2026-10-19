@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de Equipos</title>
-    <link rel="stylesheet" href="https://jsdelivr.net">
+    <!-- Dirección oficial CDN completa de Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body class="bg-light">
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2>🏆 Equipos Participantes</h2>
-            <a href="{{ route('equipos.crear') }}" class="btn btn-primary">➕ Registrar Equipo</a>
+            <div>
+                <a href="{{ route('equipos.crear') }}" class="btn btn-primary">➕ Registrar Equipo</a>
+                <a href="{{ route('jugadores.crear') }}" class="btn btn-success">🏃‍♂️ Registrar Jugador</a>
+            </div>
         </div>
 
         @if(session('success'))
@@ -40,6 +44,7 @@
                                     @endif
                                 </td>
                                 <td><strong>{{ $equipo->nombre }}</strong></td>
+                                <!-- Corregido aquí: dejamos solo la columna que creamos en tu MySQL -->
                                 <td>{{ $equipo->ciudad }}</td>
                             </tr>
                         @empty

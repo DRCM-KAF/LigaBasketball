@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Liga;
 
 use App\Http\Controllers\Controller;
@@ -8,6 +9,7 @@ use Illuminate\Http\Request;
 
 class JugadorController extends Controller
 {
+    // Mostrar la lista de jugadores
     public function index()
     {
         $jugadores = Jugador::with('equipo')->get();
@@ -15,6 +17,7 @@ class JugadorController extends Controller
         return view('jugadores.index', compact('jugadores'));
     }
 
+    // Mostrar el formulario para registrar jugadores
     public function create()
     {
         $equipos = Equipo::all();
@@ -22,6 +25,7 @@ class JugadorController extends Controller
         return view('jugadores.gestionar', compact('equipos'));
     }
 
+    // Guardar un nuevo jugador
     public function store(Request $request)
     {
         $request->validate([
@@ -34,7 +38,7 @@ class JugadorController extends Controller
         Jugador::create($request->all());
 
         return redirect()
-            ->route('equipos.index')
+            ->route('jugadores.index')
             ->with('success', 'Jugador registrado correctamente.');
     }
 }

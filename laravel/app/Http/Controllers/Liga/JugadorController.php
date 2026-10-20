@@ -30,9 +30,9 @@ class JugadorController extends Controller
     {
         $request->validate([
             'equipo_id' => 'required|exists:equipos,id',
-            'nombre' => 'required|string|max:255',
-            'posicion' => 'required|string|max:255',
-            'numero' => 'required|integer',
+            'nombre'    => 'required|string|max:255',
+            'posicion'  => 'required|string|max:255',
+            'numero'    => 'required|integer',
         ]);
 
         Jugador::create($request->all());

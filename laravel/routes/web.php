@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -6,10 +5,12 @@ use App\Http\Controllers\Liga\EquipoController;
 use App\Http\Controllers\Liga\JugadorController;
 use App\Http\Controllers\Liga\PartidoController;
 
-// Pantalla principal del proyecto
+// Menú principal del proyecto
 Route::get('/', function () {
-    return redirect()->route('equipos.index');
+    return redirect()->route('inicio');
 });
+
+Route::view('/inicio', 'inicio')->name('inicio');
 
 // Rutas para la gestión de equipos
 Route::prefix('equipos')->group(function () {

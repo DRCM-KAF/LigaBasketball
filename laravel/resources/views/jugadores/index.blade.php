@@ -5,75 +5,119 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jugadores | LigaBasketball</title>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f3f5f9;color:#172033}
+body{font-family:Arial,sans-serif;background:#0b1120;color:#f8fafc}
 a{text-decoration:none;color:inherit}
 .layout{display:grid;grid-template-columns:245px minmax(0,1fr);min-height:100vh}
 .sidebar{background:#111827;color:white;padding:28px 18px;position:sticky;top:0;height:100vh}
-.brand{font-size:23px;font-weight:bold;margin-bottom:8px}.brand span{color:#f97316}
+.brand{font-size:23px;font-weight:bold;margin-bottom:8px}
+.brand span{color:#f97316}
 .sub{font-size:12px;color:#9ca3af;margin-bottom:35px}
-.menu-title{font-size:11px;color:#9ca3af;text-transform:uppercase;letter-spacing:1.5px;margin:25px 12px 12px}
 .nav a{display:block;color:#cbd5e1;padding:13px 14px;border-radius:9px;margin:5px 0;font-size:14px}
 .nav a:hover,.nav a.active{background:#f97316;color:white}
 .side-bottom{position:absolute;bottom:25px;left:18px;right:18px;background:#1f2937;border-radius:12px;padding:15px;font-size:13px;color:#d1d5db;line-height:1.6}
+
 main{padding:35px;min-width:0}
 .top{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:28px}
-.top small{color:#64748b}.top h1{font-size:27px;margin-top:7px}
+.top small{color:#94a3b8}
+.top h1{font-size:27px;margin-top:7px}
+
 .btn{display:inline-block;border:0;cursor:pointer;background:#f97316;color:white;padding:12px 16px;border-radius:9px;font-size:13px;font-weight:bold}
 .btn:hover{background:#ea580c}
-.secondary{background:white;color:#172033;border:1px solid #e2e8f0}.secondary:hover{background:#e9edf4}
+.secondary{background:#18243a;color:#f8fafc;border:1px solid #263449}
+.secondary:hover{background:#263449}
+
 .hero{display:flex;justify-content:space-between;align-items:center;gap:20px;background:linear-gradient(120deg,#172033,#263b5c);color:white;padding:28px;border-radius:16px;margin-bottom:25px}
 .kicker{color:#fdba74;font-size:12px;font-weight:bold;letter-spacing:1.5px}
-.hero h2{font-size:27px;margin:12px 0}.hero h2 span{color:#fb923c}
-.hero p{color:#cbd5e1;font-size:14px;line-height:1.7;max-width:650px}.ball{font-size:65px}
+.hero h2{font-size:27px;margin:12px 0}
+.hero h2 span{color:#fb923c}
+.hero p{color:#cbd5e1;font-size:14px;line-height:1.7;max-width:650px}
+.ball{font-size:65px}
+
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:28px}
-.stat{background:white;border:1px solid #e5e7eb;border-radius:13px;padding:20px}
-.stat small{color:#64748b;font-size:13px}.number{font-size:27px;font-weight:bold;margin-top:10px}.stat span{display:block;font-size:12px;color:#f97316;margin-top:5px}
+.stat{background:#111b2e;border:1px solid #263449;border-radius:13px;padding:20px}
+.stat small{color:#94a3b8;font-size:13px}
+.number{font-size:27px;font-weight:bold;margin-top:10px}
+.stat span{display:block;font-size:12px;color:#f97316;margin-top:5px}
+
 .heading{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:20px}
-.heading h2{font-size:22px;margin:8px 0}.heading p{color:#64748b;font-size:13px}
+.heading h2{font-size:22px;margin:8px 0}
+.heading p{color:#94a3b8;font-size:13px}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
-.toolbar{display:grid;grid-template-columns:minmax(0,1fr) 220px auto;gap:10px;padding:15px;background:white;border:1px solid #e5e7eb;border-radius:13px;margin-bottom:22px}
-input,select{width:100%;min-width:0;padding:12px;border-radius:9px;background:#f8fafc;color:#172033;border:1px solid #dbe2ea;outline:none}
+
+.toolbar{display:grid;grid-template-columns:minmax(0,1fr) 220px auto;gap:10px;padding:15px;background:#111b2e;border:1px solid #263449;border-radius:13px;margin-bottom:22px}
+input,select{width:100%;min-width:0;padding:12px;border-radius:9px;background:#0b1120;color:#f8fafc;border:1px solid #263449;outline:none}
 input:focus,select:focus{border-color:#f97316}
+
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
-.card{background:white;border:1px solid #e2e8f0;border-radius:15px;overflow:hidden;transition:.2s}
-.card:hover{transform:translateY(-4px);border-color:#fb923c;box-shadow:0 8px 22px #1720330c}
-.cover{background:linear-gradient(120deg,#e8edf5,#fff4e9);padding:18px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e5e7eb}
+.card{background:#111b2e;border:1px solid #263449;border-radius:15px;overflow:hidden;transition:.2s}
+.card:hover{transform:translateY(-4px);border-color:#fb923c}
+.cover{background:linear-gradient(120deg,#172033,#263b5c);padding:18px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #263449}
 .avatar{width:57px;height:57px;display:grid;place-items:center;background:#f97316;color:white;border-radius:15px;font-size:25px;font-weight:bold}
-.jersey{font-size:44px;font-weight:bold;color:#cbd5e1}
-.details{padding:18px}.tag{color:#f97316;font-size:11px;font-weight:bold;letter-spacing:1px}
+.jersey{font-size:44px;font-weight:bold;color:#94a3b8}
+.details{padding:18px}
+.tag{color:#f97316;font-size:11px;font-weight:bold;letter-spacing:1px}
 .details h3{font-size:18px;margin:9px 0 18px;overflow-wrap:anywhere}
-.muted{font-size:12px;color:#64748b}
-.team{display:inline-block;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:8px;padding:9px;margin-top:7px;font-size:13px;font-weight:bold;overflow-wrap:anywhere}
-.footer{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid #e5e7eb;padding-top:15px;margin-top:18px}
-.position{display:inline-block;background:#fff0e5;color:#c2410c;padding:8px;border-radius:8px;font-size:12px;font-weight:bold;margin-top:6px}
-.dorsal{display:inline-block;background:#172033;color:white;border-radius:9px;padding:9px 12px;font-weight:bold;margin-top:6px}
-.empty{grid-column:1/-1;text-align:center;padding:40px 20px;background:white;border:1px dashed #cbd5e1;border-radius:15px}
-.empty h3{margin:12px 0 8px}.empty p{color:#64748b;margin-bottom:18px}
+.muted{font-size:12px;color:#94a3b8}
+.team{display:inline-block;background:#18243a;border:1px solid #263449;border-radius:8px;padding:9px;margin-top:7px;font-size:13px;font-weight:bold;overflow-wrap:anywhere}
+.footer{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid #263449;padding-top:15px;margin-top:18px}
+.position{display:inline-block;background:#431f0c;color:#fdba74;padding:8px;border-radius:8px;font-size:12px;font-weight:bold;margin-top:6px}
+.dorsal{display:inline-block;background:#263449;color:white;border-radius:9px;padding:9px 12px;font-weight:bold;margin-top:6px}
+.empty{grid-column:1/-1;text-align:center;padding:40px 20px;background:#111b2e;border:1px dashed #263449;border-radius:15px}
+.empty h3{margin:12px 0 8px}
+.empty p{color:#94a3b8;margin-bottom:18px}
 .alert{padding:14px;border-radius:9px;margin-bottom:18px;font-size:14px}
-.success{background:#dcfce7;color:#166534}.error{background:#fee2e2;color:#991b1b}
+.success{background:#14532d;color:#dcfce7}
+.error{background:#7f1d1d;color:#fee2e2}
 .alert ul{padding-left:20px;margin-top:8px}
 footer{text-align:center;color:#94a3b8;font-size:12px;padding:25px}
 [hidden]{display:none!important}
-@media(max-width:1100px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.toolbar{grid-template-columns:1fr 1fr}.toolbar button{grid-column:1/-1}}
-@media(max-width:850px){.layout{grid-template-columns:1fr}.sidebar{position:relative;height:auto;padding:20px}.sub{margin-bottom:15px}.menu-title{margin:15px 0 8px}.nav{display:flex;flex-wrap:wrap;gap:5px}.nav a{margin:0;padding:10px}.side-bottom{display:none}main{padding:20px}}
-@media(max-width:550px){main{padding:15px}.hero{padding:22px}.ball{font-size:40px}.hero h2{font-size:23px}.stats,.grid,.toolbar{grid-template-columns:1fr}.toolbar button{grid-column:auto}.top h1{font-size:23px}.actions{width:100%}.actions a{flex:1;text-align:center}}
+
+@media(max-width:1100px){
+.grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.toolbar{grid-template-columns:1fr 1fr}
+.toolbar button{grid-column:1/-1}
+}
+@media(max-width:850px){
+.layout{grid-template-columns:1fr}
+.sidebar{position:relative;height:auto;padding:20px}
+.sub{margin-bottom:15px}
+.nav{display:flex;flex-wrap:wrap;gap:5px}
+.nav a{margin:0;padding:10px}
+.side-bottom{display:none}
+main{padding:20px}
+}
+@media(max-width:550px){
+main{padding:15px}
+.hero{padding:22px}
+.ball{font-size:40px}
+.hero h2{font-size:23px}
+.stats,.grid,.toolbar{grid-template-columns:1fr}
+.toolbar button{grid-column:auto}
+.top h1{font-size:23px}
+.actions{width:100%}
+.actions a{flex:1;text-align:center}
+}
 </style>
 </head>
+
 <body>
 <div class="layout">
 
 <aside class="sidebar">
     <div class="brand">Liga<span>Basketball</span></div>
     <div class="sub">SISTEMA DE GESTIÓN DEPORTIVA</div>
-    <div class="menu-title">Menú principal</div>
+
     <nav class="nav">
+        <a href="{{ route('inicio') }}">🏠 Inicio</a>
         <a href="{{ route('equipos.index') }}">🏀 Equipos</a>
         <a href="{{ route('jugadores.index') }}" class="active">👥 Jugadores</a>
         <a href="{{ route('partidos.crear') }}">📋 Registrar partido</a>
         <a href="{{ route('partidos.tabla') }}">🏆 Clasificación</a>
     </nav>
+
     <div class="side-bottom">
         <strong>🏀 LigaBasketball</strong><br>
         Administra tus equipos, jugadores y resultados desde un solo lugar.
@@ -119,11 +163,13 @@ footer{text-align:center;color:#94a3b8;font-size:12px;padding:25px}
             <div class="number">{{ $jugadores->count() }}</div>
             <span>Jugadores en la liga</span>
         </article>
+
         <article class="stat">
             <small>Equipos representados</small>
             <div class="number">{{ $jugadores->pluck('equipo_id')->filter()->unique()->count() }}</div>
             <span>Equipos con jugadores</span>
         </article>
+
         <article class="stat">
             <small>Posiciones diferentes</small>
             <div class="number">{{ $jugadores->pluck('posicion')->filter()->unique()->count() }}</div>
@@ -137,6 +183,7 @@ footer{text-align:center;color:#94a3b8;font-size:12px;padding:25px}
             <h2>Directorio de jugadores</h2>
             <p>Busca y filtra la plantilla registrada.</p>
         </div>
+
         <div class="actions">
             <a class="btn secondary" href="{{ route('equipos.index') }}">🏀 Ver equipos</a>
             <a class="btn" href="{{ route('jugadores.crear') }}">+ Registrar jugador</a>
@@ -145,12 +192,14 @@ footer{text-align:center;color:#94a3b8;font-size:12px;padding:25px}
 
     <section class="toolbar">
         <input type="search" id="search" placeholder="Buscar jugador o equipo...">
+
         <select id="filter">
             <option value="">Todas las posiciones</option>
             @foreach($jugadores->pluck('posicion')->filter()->unique()->sort() as $posicion)
                 <option value="{{ strtolower($posicion) }}">{{ $posicion }}</option>
             @endforeach
         </select>
+
         <button class="btn secondary" id="reset" type="button">↺ Limpiar filtros</button>
     </section>
 
@@ -159,20 +208,25 @@ footer{text-align:center;color:#94a3b8;font-size:12px;padding:25px}
             <article class="card"
                 data-search="{{ strtolower($jugador->nombre.' '.($jugador->equipo?->nombre ?? 'Sin equipo').' '.($jugador->posicion ?? '')) }}"
                 data-position="{{ strtolower($jugador->posicion ?? '') }}">
+
                 <div class="cover">
                     <div class="avatar">{{ strtoupper(mb_substr($jugador->nombre,0,1,'UTF-8')) }}</div>
                     <div class="jersey">{{ $jugador->numero }}</div>
                 </div>
+
                 <div class="details">
                     <div class="tag">JUGADOR #{{ $jugador->id }}</div>
                     <h3>{{ $jugador->nombre }}</h3>
+
                     <div class="muted">EQUIPO ACTUAL</div>
                     <div class="team">🏀 {{ $jugador->equipo?->nombre ?? 'Sin equipo' }}</div>
+
                     <div class="footer">
                         <div>
                             <div class="muted">POSICIÓN</div>
                             <span class="position">{{ $jugador->posicion ?: 'Sin posición' }}</span>
                         </div>
+
                         <div style="text-align:right">
                             <div class="muted">DORSAL</div>
                             <span class="dorsal">{{ $jugador->numero }}</span>
@@ -214,6 +268,7 @@ function applyFilters() {
     cards.forEach(card => {
         const matches = card.dataset.search.includes(query) &&
             (!position || card.dataset.position === position);
+
         card.hidden = !matches;
         if (matches) count++;
     });
@@ -223,11 +278,13 @@ function applyFilters() {
 
 search.addEventListener('input', applyFilters);
 filter.addEventListener('change', applyFilters);
+
 document.getElementById('reset').addEventListener('click', () => {
     search.value = '';
     filter.value = '';
     applyFilters();
 });
 </script>
+
 </body>
 </html>
